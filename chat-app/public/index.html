@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        
+        <!-- HEAD TO CHANGE STYLE AND MAKE PAGE RESPONSIVE -->
+        
+        <meta charset="utf-8">
+        <title>WebScockets 101</title>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.7.3/socket.io.js"></script>
+        <link href="/styles.css" rel="stylesheet" />
+    </head>
+    
+    <body>
+
+<!--CHAT APP INTERFACE HERE-->
+        <div id="Ratul-chat">
+            <h2>Ratul chat</h2>
+            
+            <h3 id='session_name'></h3>
+            <div id="chat-window">
+                <div id="output"></div>
+                <div id="feedback"></div>
+            </div>
+            
+            <!--TO TAKE USER INPUTS-->
+            <input id="Join" type="text" placeholder="Join" />
+            <input id="message" type="text" placeholder="Message" />
+            <button id="send">Send</button>
+        </div>
+
+
+        
+        
+ 
+ <!--COUNTDOWN TIMER FOR 15 MIN IMPLEMENTED HERE    -->
+ <!--SEE JS FOR COUNTDOWN TIMER BELOW -->
+<div class="timer-container" id="#run-the-timer">
+<span class="minute">15</span>:<span class="second">00</span>
+ 
+<span class="timeout_message_show" style="display:none;">We are Sorry, your time is up !</span>
+ 
+</div>
+
+
+<script>
+    
+    window.onload = function () {
+ 
+var fragmentTime;
+ 
+jQuery('.timeout_message_show').hide();
+ 
+var minutes = jQuery('span.minute').text();
+ 
+var seconds = jQuery('span.second').text();
+ 
+minutes = parseInt(minutes);
+ 
+seconds = parseInt(seconds);
+ 
+if (isNaN(minutes)) {
+ 
+minutes = 00;
+ 
+}
+ 
+if (isNaN(seconds)) {
+ 
+seconds = 00;
+ 
+}
+ 
+if (minutes == 60) {
+ 
+minutes = 59;
+ 
+}
+ 
+if (seconds == 60) {
+ 
+seconds = 59;
+ 
+}
+ 
+fragmentTime = (60 * minutes) + (seconds);
+ 
+displayMinute = document.querySelector('span.minute');
+ 
+displaySecond = document.querySelector('span.second');
+ 
+startTimer(fragmentTime, displayMinute, displaySecond);
+ 
+};
+
+
+function startTimer(duration, displayMinute, displaySecond) {
+ 
+var timer = duration,
+ 
+displayMinute, displaySecond;
+ 
+var timeIntervalID = setInterval(function () {
+ 
+minutes = parseInt(timer / 60, 10)
+ 
+seconds = parseInt(timer % 60, 10);
+ 
+minutes = minutes < 10 ? "0" + minutes : minutes;
+ 
+seconds = seconds < 10 ? "0" + seconds : seconds;
+ 
+displayMinute.textContent = minutes;
+ 
+displaySecond.textContent = seconds;
+ 
+if (--timer < 0) {
+ 
+timer = 0;
+ 
+if (timer == 0) {
+ 
+clearInterval(timeIntervalID);
+ 
+alert(jQuery('.timeout_message_show').text());
+ 
+}
+ 
+}
+ 
+}, 1000);
+ 
+}
+</script>
+
+
+
+    </body>
+    
+    <!--LINKIN TO ENTERNAL JS FILES-->
+    <script src="/chat.js"></script>
+    
+    <script src="script.js"></script>
+</html>

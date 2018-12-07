@@ -1,0 +1,13 @@
+<!--GET LIST OF MESSAGES UNDER ONE CONVERSATION NAME-->
+
+<script>
+     $.ajax({
+          method:"GET",
+          url:"/message/list"
+        }).done(function(response){
+          console.log(response);
+        }).fail(function(response){
+          console.log(response.responseText);
+        });
+      });
+</script>
